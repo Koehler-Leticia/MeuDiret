@@ -3,117 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JOGO: ADVINHAÇÃO</title>
-   
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-
-        h1 {
-            background-color: rgb(184, 125, 214);
-            text-align: center;
-            font-family: fantasy;
-            font-style: normal;
-            font-weight: 100;
-            font-size: 80px;
-            margin: 20px 80px 20px;
-        }
-
-        p {
-            margin: 20px 80px 20px;
-            background-color: rgba(210, 146, 230, 0.959);
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            font-size: larger;
-            padding: 10px;
-            
-        }
-
-        input {
-            background-color: rgb(255, 180, 218);
-            border-color: rgb(255, 151, 207);
-            padding: 5px;
-            font-size: larger;
-        }
-
-        button {
-           
-            background-color: #e89dff;
-            color: rgb(0, 0, 0);
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin-top: 10px;
-            cursor: pointer;
-            border-radius: 5px; /* Borda arredondada */
-            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
-        }
-    </style>
+    <title>Lista de exercícios</title>
 </head>
-
 <body>
-    <h1>Você consegue adivinhar o número?</h1>
-    <img src="imagens/kuromima.jpg" width="150px" >
-    <p>Você precisa adivinhar o número de 1 a 100!</p>
-    <input type="number" placeholder="seu palpite" id="guessInput" max="100">
-    <button onclick="checkGuess()">Enviar</button>
-    <p id="secreto"></p>
-    <p id="resultado"></p>
-    <p>erros: <span Id="erros">0</span></p>
-    <p>acertos: <span id="acertos">0</span></p>
-    <p>sorteados: <span Id="sorteados">0</span></p>
-    <p>apostados: <span Id="apostados"></span></p>
-    <center> <img src= "imagens/gif.gif"> </center>
-
-
+    <button onclick="alert('Olá mundo...');">Olá Mundo!</button>
+    <br>
+    <br>
+    <br>
+    Digite um número: 
+    <br>
+    <input type=text id='num'>
+    <br>
+    <button onclick='cubic();'>Faça a mágica acontecer</button>
+    <p id='resultado'></p>
+    <br>
+    <br>
+    <br>
+    Digite uma temperatura em farenheits:
+    <br>
+    <input type=text id='temp'>
+    <br>
+    <button onclick='convert();'>Converta</button>
+    <p id='celsiu'></p>
+    <br>
+    <br>
+    <br>
+    Calcule a área do triângulo:
+     <br>
+    Base:
+    <input type="text" id="base">
+    <br>
+    Altura:
+    <input type text id="altura">
+    <br>
+    <button onclick='areatri();'>Calcule</button>
+    <br>
+    <br>
+    Resultado:
+    <p id="area"></p>
+    <br>
+    <br>
+    <br>
+    Diga o Raio do círculo
+    <br>
+    <input type="text" id="raio">
+    <br>
+    <button onclick = 'calcperi();'>Calcule</button>
+    <p id="perimetro"></p>
+    <br>
+    <br>
+    <br>
+    Digite uma palavra qualquer:
+    <br>
+    <input type="text" id="palavra">
+    <br>
+    <button onclick="vogais();">Quantas tem?</button>
+    <p id="numVog"></p>
     <script>
-        function sorteio(n) {
-            return Math.floor(Math.random() * (n + 1));
-    }
-
-        var acertos = 0;
-        var erros = 0;
-        var aleatorio = sorteio(100)
-        var input = document.querySelector("#guessInput")
-        var acertosSpan = document.querySelector("#acertos")
-        var errosSpan = document.querySelector("#erros")
-        var sorteadosSpan = document.querySelector("#sorteados")
-        var historico = [];
-        var apostados = [];
-
-
-        function checkGuess() {
-            aleatorio = sorteio (100);
-            historico.push(aleatorio);
-            apostados.push(input.value);
-            var palpite = parseInt(input.value);
-
-            if (isNaN(palpite) || palpite < 1 || palpite > 100) {
-                document.getElementById("secreto").textContent = "só pode colocar numero entre 1 e 100 mano.";
-                return;
+        function cubic(){
+            numero = parseInt(document.getElementById('num').value);
+            result = numero * numero * numero;
+            document.getElementById('resultado').innerHTML = result;
+        }
+            function convert(){
+            farenheit = parseInt(document.getElementById('temp').value);
+            celsius = (farenheit - 32)*0.555;
+            document.getElementById('celsiu').innerHTML = celsius+"°";
+        }
+        function areatri(){
+            alt = parseInt(document.getElementById('altura').value);
+            bas = parseInt(document.getElementById('base').value);
+            areaa = (bas*alt)/2;
+            document.getElementById('area').innerHTML = areaa;    
+        }
+        function calcperi(){
+            raioo = parseInt(document.getElementById('raio').value);
+            peri = 2*3.141592*raioo;
+            document.getElementById('perimetro').innerHTML = peri;
+        }
+        function vogais(){
+            var palavra = document.getElementById('palavra').value.toLowerCase();
+            var vogs = 'aeiou';
+            var numeVog = 0;
+         
+            for (var i = 0; i < palavra.length; i++) {
+                if (vogs.indexOf(palavra[i]) !== -1) {
+                    numeVog++;
+                }
             }
-
-            if (palpite === aleatorio) {
-                document.getElementById("secreto").textContent = "SELOKOOO VC ACERTOU MLK, O NUMERO ERA " +aleatorio;
-                acertos++;
-                acertosSpan.textContent= acertos;
-            } else {
-                document.getElementById("secreto").textContent = "aff errou dmais, o número era "+ aleatorio;
-                erros++;
-                errosSpan.textContent= erros;
-            }
-            sorteadosSpan.textContent = historico.join(", ");
-           document.getElementById("apostados").textContent = apostados.join(", ");
-
+            
+            document.getElementById('numVog').innerHTML = numeVog;
         }
         
     </script>
 </body>
 </html>
+
+
+
+<!-- Lista de Exercícios – Funções em JavaScript
+
+Na tela do computador, crie uma pasta para os exercícios abaixo. Cada exercício, você salva em uma pasta diferente dentro da pasta criada acima.
+
+
+1. Escreva uma função em JavaScript que mostre na tela a mensagem “Bom dia, Mundo!!!”.
+
+
+2. Escreva uma função que retorne o cubo de um número fornecido pelo usuário.
+
+
+3. Escreva uma função em JavaScript que realize a conversão de uma temperatura fornecida em graus Fahrenheit (F) para Celsius (C).
+
+Dica: para converter uma temperatura em F para C, subtraia 32 da temperatura e multiplique o resultado por 0,5556 (ou 5/9).
+
+
+4. Escreva uma função que retorne a área de um triângulo, a partir dos valores de base e altura fornecidos.
+
+
+5. Escreva uma função que encontre a área e o perímetro de um círculo, de acordo com o raio fornecido.
+
+
+6. Escreva uma função que permita contar o número de vogais contidas em uma string fornecida pelo usuário. Por exemplo, o usuário informa a string “Beterraba”, e a função retorna o número 4 (há 4 vogais nessa palavra).
+-->

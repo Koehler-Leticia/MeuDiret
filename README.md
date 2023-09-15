@@ -12,7 +12,3 @@
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=chriss-k0)](https://github.com/anuraghazra/github-readme-stats)
 
 ![GitHub stats](https://github-readme-stats.vercel.app/api?username=chriss-k0&show_icons=true)  
-
-![GitHub Activity Graph](https://activity-graph.herokuapp.com/graph?username=chriss-k0)  
-
-![Profile views](https://gpvc.arturio.dev/chriss-k0)  

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>media</title>
+</head>
+<body>
+    <p>aprovado ou reprovado?</p>
+    nota1<input type="text" id="nota1">
+    nota2<input type="text" id="nota2">
+    <button onclick='calcularMedia()'>clique aqui</button>
+    <br>
+    média: <p id="resultadoMedia"></p>
+php
+Copy code
+<script>
+    function calcularMedia() {
+        var nota1 = parseFloat(document.getElementById("nota1").value);
+        var nota2 = parseFloat(document.getElementById("nota2").value);
+        var mediaCalculada = (nota1 + nota2) / 2;
+
+        if (mediaCalculada >= 7.0) {
+            document.getElementById("resultadoMedia").innerHTML = "Aprovado";
+        } else {
+            document.getElementById("resultadoMedia").innerHTML = "Reprovado";
+        }
+    }
+</script>  
+</body>
+</html>
